@@ -1,0 +1,36 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.content-desc{
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px rgb(199, 179, 5) solid;
+  gap: 8px;
+}
+.image-logo{
+  width: 60%;
+  height: 120px;
+}
+.name-user{
+  color: #f4db5a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-align: center;
+}
+.name-role{
+  color: #ffffff;
+  font-size: 1rem;
+  font-style:oblique;
+  text-align: center;
+}
+:where(.css-dev-only-do-not-override-pr0fja).ant-menu-light.ant-menu-root.ant-menu-inline, :where(.css-dev-only-do-not-override-pr0fja).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-inline, :where(.css-dev-only-do-not-override-pr0fja).ant-menu-light.ant-menu-root.ant-menu-vertical, :where(.css-dev-only-do-not-override-pr0fja).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-vertical {
+  border-inline-end: 0px solid rgba(5, 5, 5, 0.06);
+}
+.demo-logo{
+  width: 50px;
+  height: 50px;
+}
