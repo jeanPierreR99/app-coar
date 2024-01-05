@@ -65,7 +65,7 @@ function RouteAdmin() {
             {
               key: '1',
               icon: <HomeOutlined />,
-              label: 'Inicio',
+              label: 'nuevo',
               onClick: ()=>{navigate("/admin")}
             },
             {
