@@ -34,3 +34,100 @@
   width: 50px;
   height: 50px;
 }
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .ant-col-rtl .login-form-forgot {
+  float: left;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}
+.content-home{
+}
+.tableDescription{
+  border-collapse: collapse;
+  width: 100%;
+  }
+  .tableDescription tr, .tableDescription th, .tableDescription td{
+    padding: 0 20px 0 10px;
+    text-align: left;
+    border: 1px rgb(232, 234, 239) solid;
+  }
+  .ant-table-wrapper .ant-table-tbody >tr >th, :where(.css-dev-only-do-not-override-pr0fja).ant-table-wrapper .ant-table-tbody >tr >td{
+    border: none;
+    padding: 5px;
+  }
+  .table{
+    margin-top: 20px;
+    /* box-shadow: 1px 1px 12px rgb(243, 241, 241); */
+  }
+  .title-table{
+    font-size: 1.2rem;
+    color:  rgb(48, 50, 50);
+    font-weight: 500;
+  }
+  .ant-table-thead th{
+    color: rgb(85, 88, 92) !important;
+    /* background: rgb(240, 239, 239) !important; */
+  }
+  .ant-table-tbody{
+    color: rgb(85, 88, 92);
+  }
+  :where(.css-dev-only-do-not-override-17sses9).ant-table-wrapper .ant-table-tbody >tr >th, :where(.css-dev-only-do-not-override-17sses9).ant-table-wrapper .ant-table-tbody >tr >td{
+    border: none;
+    padding: 4px;
+  }
+  .top-teacher{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .top-path{
+    color: #73747b;
+  }
+  :where(.css-dev-only-do-not-override-17sses9)[class^="ant-dropdown"], :where(.css-dev-only-do-not-override-17sses9)[class*=" ant-dropdown"]{
+    padding: 4px;
+  }
+  .login-form {
+    max-width: 300px;
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 6px;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .ant-col-rtl .login-form-forgot {
+    float: left;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+  .content-login{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .img-absolute{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-position: center;
+    background-size:cover;
+    z-index: -1;
+    background-repeat: no-repeat;
+    background-image: url("./assets/images/coar-fondo.png");
+  }
+  .img-logo-horizontal{
+    max-width: 130px;
+    margin-bottom: 20px;
+  }

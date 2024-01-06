@@ -1,14 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomeContainer from "../../containers/HomeContainer";
-import StudentContainer from "../../containers/StudentContainer";
-import AdminContainer from "../../containers/AdminContainer";
+import Login from "../../containers/home/Login";
 function RouteDefault() {
   return (
     <Routes>
-       <Route path="/" element={<HomeContainer />} />
-       <Route path="/student" element={<StudentContainer />} />
-       <Route path="/admin" element={<AdminContainer />} />
+       <Route path="/" element={<Login />} />
     </Routes>
   );
 }

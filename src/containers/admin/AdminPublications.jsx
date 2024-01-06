@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const StudentContainer = () => {
+const AdminPublications = () => {
   return (
     <div>
-      <h1>Student</h1>
+        <h1>PUBLICACIONES</h1>
     </div>
   );
 };
-export default StudentContainer;
+export default AdminPublications;

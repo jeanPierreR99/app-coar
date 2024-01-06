@@ -1,39 +1,54 @@
-import React, { useState, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { Line } from "@ant-design/plots";
+import { Column } from '@ant-design/plots';
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+const data = [
+  { type: 'matematicas', value: 40 },
+  { type: 'comunicacion', value: 40 },
+  { type: 'fisica', value: 24 },
+  { type: 'algebra', value: 21 },
+  { type: 'historia', value: 28 },
+  { type: 'ingles', value: 50 },
+  { type: 'programacion', value: 30 },
+  { type: 'otros', value: 10 },
+];
 
 const ChartLine = () => {
-  const [data, setData] = useState([]);
+  const chartRef = React.useRef(null);
 
-  useEffect(() => {
-    asyncFetch();
-  }, []);
+  const medal = (datum, ranking) => {
+    if (ranking > 2) return datum;
+    const { chart } = chartRef.current;
+    const { document } = chart.getContext().canvas;
+    const group = document?.createElement('g', {});
 
-  const asyncFetch = () => {
-    fetch(
-      "https://gw.alipayobjects.com/os/bmw-prod/1d565782-dde4-4bb6-8946-ea6a38ccf184.json"
-    )
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => {
-        console.log("fetch data failed", error);
-      });
+    const text = ['ingles🏆', 'matematicas🥈', 'programacion🥉'][ranking];
+    const label = document.createElement('text', {
+      style: {
+        text,
+        fill: 'gray',
+        textAlign: 'center',
+        transform: `translate(0, 25)`,
+      },
+    });
+
+    group.appendChild(label);
+    return group;
   };
+
   const config = {
     data,
-    padding: "auto",
-    xField: "Date",
-    yField: "scales",
-    xAxis: {
-      tickCount: 5,
+    xField: 'type',
+    yField: 'value',
+    colorField: 'type',
+    axis: {
+      x: {
+        size: 40,
+        labelFormatter: (datum, index) => medal(datum, index),
+      },
     },
-    slider: {
-      start: 0.1,
-      end: 0.5,
-    },
+    onReady: (plot) => (chartRef.current = plot),
   };
-
-  return <Line {...config} />;
+  return <Column {...config} />;
 };
-
-export default ChartLine;
+export default ChartLine

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const AdminContainer = () => {
+const AdminCategory = () => {
   return (
     <div>
-      <h1>Admin</h1>
+        <h1>Categorias</h1>
     </div>
   );
 };
-export default AdminContainer;
+export default AdminCategory;

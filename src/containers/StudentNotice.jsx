@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const HomeContainer = () => {
+const StudentNotice = () => {
   return (
     <div>
-      <h1>HOme</h1>
+      <h1>Notice</h1>
     </div>
   );
 };
-export default HomeContainer;
+export default StudentNotice;
