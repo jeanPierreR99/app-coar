@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import FormAddTeacher from './FormAddTeacher';
 import InputSearch from './InputSearch';
-const ModalAddTeacher = ({title}) => {
+const ModalAddTeacher = ({title, onSearch}) => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const showModal = () => {
@@ -18,7 +18,7 @@ const ModalAddTeacher = ({title}) => {
   return (
     <>
     <div className='top-teacher'>
-    <InputSearch></InputSearch>
+    <InputSearch onSearch={onSearch}></InputSearch>
     <Button type="primary" onClick={showModal}>
         +Nuevo
       </Button>

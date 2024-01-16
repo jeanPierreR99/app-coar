@@ -4,6 +4,28 @@ import { Button, Checkbox, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import logo_coar from "../../assets/images/coar-logo.png";
 import { useLogin, useRole } from "../../services/context/Context.provider";
+import app from "../../services/firebase/ConectionFirebase";
+
+import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
+
+const firestore = getFirestore(app);
+
+// const createCollection = async () => {
+//   try {
+//     const collectionRef = collection(firestore, "users");
+
+//     await addDoc(collectionRef, {
+//       user_name: "admin",
+//       user_user: "Mario Jesus Ormachea Mejia",
+//       user_password: "1234",
+//       user_rol: "admin",
+//     });
+
+//     console.log("Colección creada exitosamente");
+//   } catch (error) {
+//     console.error("Error al crear la colección: ", error);
+//   }
+// };
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,29 +35,48 @@ const Login = () => {
   const onFinish = (values) => {
     console.log(values);
     handleLogin(values.username, values.password);
+    // createCollection()
   };
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
-  const handleStorage = (user, token, role) => {
+  const handleStorage = (user, role) => {
     const userStorage = {
       user: user,
-      token: token,
       role: role,
     };
     localStorage.setItem("user", JSON.stringify(userStorage));
   };
 
-  const handleLogin = async (email, password) => {
-    console.log(email, password);
-    if (email == "student" && password == "1234") {
-      setIsLogin(true);
-      navigate("/student");
-    } else if (email == "admin" && password == "1234") {
-      setIsLogin(true);
-      setIsAdmin(true)
-      navigate("/admin");
+  const handleLogin = async (user_name, password) => {
+    console.log(user_name, password);
+
+    const citiesRef = collection(firestore, "users");
+    const q = query(
+      citiesRef,
+      where("user_name", "==", user_name),
+      where("user_password", "==", password)
+    );
+
+    const querySnapshot = await getDocs(q);
+    console.log(querySnapshot)
+    if(!querySnapshot.empty){
+      querySnapshot.forEach((doc) => {
+        console.log(doc.id, " => ", doc.data());
+        const val = doc.data();
+        if(val.user_rol == "admin"){
+          setIsLogin(true);
+            setIsAdmin(true)
+            navigate("/admin");
+            handleStorage(val.user_user, val.user_rol)
+        }
+        else{
+          setIsLogin(true);
+            navigate("/student");
+            handleStorage(val.user_user, val.user_rol)
+        }
+      });
     }
     else{
       alert("credenciales incorrectas")

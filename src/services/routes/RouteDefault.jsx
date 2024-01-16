@@ -4,7 +4,8 @@ import Login from "../../containers/home/Login";
 function RouteDefault() {
   return (
     <Routes>
-       <Route path="/" element={<Login />} />
+       {/* <Route path="/" element={<Login />} /> */}
+       <Route path="*" element={<Login />}></Route>
     </Routes>
   );
 }

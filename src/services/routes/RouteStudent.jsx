@@ -5,6 +5,7 @@ import logo from "../../assets/images/coar-logo.png";
 import StudentHome from "../../containers/StudentHome";
 import StudentNotice from "../../containers/StudentNotice";
 import { useLogin, useRole } from "../context/Context.provider";
+import RouteDefault from "./RouteDefault";
 
 const { Header, Content, Footer } = Layout;
 const RouteStudent = () => {
@@ -16,6 +17,7 @@ const RouteStudent = () => {
     setIsLogin(false);
     setIsAdmin(false);
     navigate("/");
+    localStorage.clear();
   };
 
   const items = [
@@ -84,8 +86,7 @@ const RouteStudent = () => {
           <Routes>
             <Route path="/student" element={<StudentHome />} />
             <Route path="/student/notice" element={<StudentNotice />} />
-
-            {/* <Route path="*" element={<DefaultPage />}></Route> */}
+            <Route path="*" element={<RouteDefault />}></Route>
           </Routes>
         </div>
       </Content>

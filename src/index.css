@@ -131,3 +131,8 @@
     max-width: 130px;
     margin-bottom: 20px;
   }
+.ant-tabs-nav-wrap{
+  justify-content: flex-end;
+}
+.content-admin-profile{
+}

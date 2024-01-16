@@ -5,7 +5,6 @@ import TableTeacher from "../../components/TableTeacher";
 const AdminTeacher = () => {
   return (
     <div>
-        <ModalAddTeacher title={"teacher"}></ModalAddTeacher>
         <TableTeacher></TableTeacher>
     </div>
   );
