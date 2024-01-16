@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
+import AdminProfile from "./admin/AdminProfile";
 
 const StudentNotice = () => {
   return (
     <div>
-      <h1>Notice</h1>
+      <AdminProfile></AdminProfile>
     </div>
   );
 };
