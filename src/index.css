@@ -1,8 +1,8 @@
-*{
+* {
   padding: 0px;
   margin: 0px;
 }
-.content-desc{
+.content-desc {
   padding: 5px;
   display: flex;
   flex-direction: column;
@@ -11,26 +11,35 @@
   border-bottom: 1px rgb(199, 179, 5) solid;
   gap: 8px;
 }
-.image-logo{
+.image-logo {
   width: 60%;
   height: 120px;
 }
-.name-user{
+.name-user {
   color: #f4db5a;
   font-size: 1.1rem;
   font-weight: 700;
   text-align: center;
 }
-.name-role{
+.name-role {
   color: #ffffff;
   font-size: 1rem;
-  font-style:oblique;
+  font-style: oblique;
   text-align: center;
 }
-:where(.css-dev-only-do-not-override-pr0fja).ant-menu-light.ant-menu-root.ant-menu-inline, :where(.css-dev-only-do-not-override-pr0fja).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-inline, :where(.css-dev-only-do-not-override-pr0fja).ant-menu-light.ant-menu-root.ant-menu-vertical, :where(.css-dev-only-do-not-override-pr0fja).ant-menu-light>.ant-menu.ant-menu-root.ant-menu-vertical {
+:where(
+    .css-dev-only-do-not-override-pr0fja
+  ).ant-menu-light.ant-menu-root.ant-menu-inline,
+:where(.css-dev-only-do-not-override-pr0fja).ant-menu-light
+  > .ant-menu.ant-menu-root.ant-menu-inline,
+:where(
+    .css-dev-only-do-not-override-pr0fja
+  ).ant-menu-light.ant-menu-root.ant-menu-vertical,
+:where(.css-dev-only-do-not-override-pr0fja).ant-menu-light
+  > .ant-menu.ant-menu-root.ant-menu-vertical {
   border-inline-end: 0px solid rgba(5, 5, 5, 0.06);
 }
-.demo-logo{
+.demo-logo {
   width: 50px;
   height: 50px;
 }
@@ -46,93 +55,142 @@
 #components-form-demo-normal-login .login-form-button {
   width: 100%;
 }
-.content-home{
+.content-home {
 }
-.tableDescription{
+.tableDescription {
   border-collapse: collapse;
   width: 100%;
-  }
-  .tableDescription tr, .tableDescription th, .tableDescription td{
-    padding: 0 20px 0 10px;
-    text-align: left;
-    border: 1px rgb(232, 234, 239) solid;
-  }
-  .ant-table-wrapper .ant-table-tbody >tr >th, :where(.css-dev-only-do-not-override-pr0fja).ant-table-wrapper .ant-table-tbody >tr >td{
-    border: none;
-    padding: 5px;
-  }
-  .table{
-    margin-top: 20px;
-    /* box-shadow: 1px 1px 12px rgb(243, 241, 241); */
-  }
-  .title-table{
-    font-size: 1.2rem;
-    color:  rgb(48, 50, 50);
-    font-weight: 500;
-  }
-  .ant-table-thead th{
-    color: rgb(85, 88, 92) !important;
-    /* background: rgb(240, 239, 239) !important; */
-  }
-  .ant-table-tbody{
-    color: rgb(85, 88, 92);
-  }
-  :where(.css-dev-only-do-not-override-17sses9).ant-table-wrapper .ant-table-tbody >tr >th, :where(.css-dev-only-do-not-override-17sses9).ant-table-wrapper .ant-table-tbody >tr >td{
-    border: none;
-    padding: 4px;
-  }
-  .top-teacher{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .top-path{
-    color: #73747b;
-  }
-  :where(.css-dev-only-do-not-override-17sses9)[class^="ant-dropdown"], :where(.css-dev-only-do-not-override-17sses9)[class*=" ant-dropdown"]{
-    padding: 4px;
-  }
-  .login-form {
-    max-width: 300px;
-    background: rgb(255, 255, 255);
-    padding: 20px;
-    border-radius: 6px;
-  }
-  .login-form-forgot {
-    float: right;
-  }
-  .ant-col-rtl .login-form-forgot {
-    float: left;
-  }
-  .login-form-button {
-    width: 100%;
-  }
-  .content-login{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-  }
-  .img-absolute{
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background-position: center;
-    background-size:cover;
-    z-index: -1;
-    background-repeat: no-repeat;
-    background-image: url("./assets/images/coar-fondo.png");
-  }
-  .img-logo-horizontal{
-    max-width: 130px;
-    margin-bottom: 20px;
-  }
-.ant-tabs-nav-wrap{
+}
+.tableDescription tr,
+.tableDescription th,
+.tableDescription td {
+  padding: 0 20px 0 10px;
+  text-align: left;
+  border: 1px rgb(232, 234, 239) solid;
+}
+.ant-table-wrapper .ant-table-tbody > tr > th,
+:where(.css-dev-only-do-not-override-pr0fja).ant-table-wrapper
+  .ant-table-tbody
+  > tr
+  > td {
+  border: none;
+  padding: 5px;
+}
+.table {
+  margin-top: 20px;
+  /* box-shadow: 1px 1px 12px rgb(243, 241, 241); */
+}
+.title-table {
+  font-size: 1.2rem;
+  color: rgb(48, 50, 50);
+  font-weight: 500;
+}
+.ant-table-thead th {
+  color: rgb(85, 88, 92) !important;
+  /* background: rgb(240, 239, 239) !important; */
+}
+.ant-table-tbody {
+  color: rgb(85, 88, 92);
+}
+:where(.css-dev-only-do-not-override-17sses9).ant-table-wrapper
+  .ant-table-tbody
+  > tr
+  > th,
+:where(.css-dev-only-do-not-override-17sses9).ant-table-wrapper
+  .ant-table-tbody
+  > tr
+  > td {
+  border: none;
+  padding: 4px;
+}
+.top-teacher {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.top-path {
+  color: #73747b;
+}
+:where(.css-dev-only-do-not-override-17sses9)[class^="ant-dropdown"],
+:where(.css-dev-only-do-not-override-17sses9)[class*=" ant-dropdown"] {
+  padding: 4px;
+}
+.login-form {
+  max-width: 300px;
+  background: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 6px;
+}
+.login-form-forgot {
+  float: right;
+}
+.ant-col-rtl .login-form-forgot {
+  float: left;
+}
+.login-form-button {
+  width: 100%;
+}
+.content-login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+.img-absolute {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-image: url("./assets/images/coar-fondo.png");
+}
+.img-logo-horizontal {
+  max-width: 130px;
+  margin-bottom: 20px;
+}
+.ant-tabs-nav-wrap {
   justify-content: flex-end;
 }
-.content-admin-profile{
+.custom-profile {
+  border-radius: 50%;
+  position: absolute;
+  bottom: -40px;
+  left: 20px;
+  border: 4px white solid;
+  width: 100px;
+  height: 100px;
+
+  @media screen and (min-width: 768px) {
+    height: 140px;
+    width: 140px;
+  }
+}
+.custom-name {
+position: absolute;
+  bottom: 45px;
+  left: 100px;
+  color: white;
+  text-shadow: 1px 1px 5px black;
+  font-size: 1.2rem;
+  width: max-content;
+
+  @media screen and (min-width: 576px) {
+  }
+
+
+  @media screen and (min-width: 768px) {
+    left: 160px;
+  }
+
+  @media screen and (min-width: 992px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
 }
