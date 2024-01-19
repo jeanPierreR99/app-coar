@@ -7,7 +7,7 @@ import { Col, Row } from "antd";
 const AdminProfile = () => {
   return (
     <Row>
-      <Col style={{position:"relative", height:"50vh"}} xs={24}>
+      <Col xs={24} className="custom-image">
         <ImageProfile></ImageProfile>
         <ImagePhotoProfile></ImagePhotoProfile>
         </Col>

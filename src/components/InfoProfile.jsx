@@ -4,16 +4,16 @@ const InfoPorofile = () => {
   return (
     <div style={{ background: "#f5f5f5", color: "#555555", padding: "20px" }}>
       <div>
-        <UserAddOutlined></UserAddOutlined> Nombres: Jean Pierre
+        <UserAddOutlined></UserAddOutlined> Nombres: anonimo
       </div>
       <div>
-        <AlignLeftOutlined></AlignLeftOutlined> Apellidos: Reyes Frisancho
+        <AlignLeftOutlined></AlignLeftOutlined> Apellidos: anonimo
       </div>
       <div>
-        <UserAddOutlined></UserAddOutlined> Edad: 25
+        <UserAddOutlined></UserAddOutlined> Edad: anonimo
       </div>
       <div>
-        <UserAddOutlined></UserAddOutlined> correo: alguien@gmail.com
+        <UserAddOutlined></UserAddOutlined> correo: anonimo@gmail.com
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ const ImageProfile = () => (
   <Image
     width={"100%"}
     height={"100%"}
-    src="https://www.tooltyp.com/wp-content/uploads/2014/10/1900x920-8-beneficios-de-usar-imagenes-en-nuestros-sitios-web.jpg"
+    src="https://images.vexels.com/content/198604/preview/language-course-education-cover-design-a4073d.png"
   />
 );
 export default ImageProfile;
