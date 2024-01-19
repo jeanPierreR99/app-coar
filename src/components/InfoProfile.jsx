@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AndroidOutlined, AlignLeftOutlined, AppstoreAddOutlined, FileImageOutlined, UserAddOutlined } from "@ant-design/icons";
 const InfoPorofile = () => {
   return (
-    <div style={{ background: "#f5f5f5", color: "#555555", padding: "20px" }}>
+    <div style={{ background: "white", color: "#555555", padding: "20px", borderRadius:"6px" }}>
       <div>
         <UserAddOutlined></UserAddOutlined> Nombres: anonimo
       </div>

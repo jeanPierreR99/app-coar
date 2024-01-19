@@ -6,7 +6,7 @@ import { Col, Row } from "antd";
 
 const AdminProfile = () => {
   return (
-    <Row>
+    <Row style={{background:"rgb(245,245,245)"}}>
       <Col xs={24} className="custom-image">
         <ImageProfile></ImageProfile>
         <ImagePhotoProfile></ImagePhotoProfile>

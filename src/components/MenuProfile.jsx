@@ -11,6 +11,7 @@ import { Col, Row, Tabs } from "antd";
 import ProfilePublication from "./ProfilePublication";
 import ListTeacher from "./ListTeacher";
 import InfoPorofile from "./InfoProfile";
+import ButtonPublication from "./ButtonPublication";
 
 const { TabPane } = Tabs;
 
@@ -34,6 +35,7 @@ const TabContent1 = () => (
       <ListTeacher></ListTeacher>
     </Col>
     <Col xs={24} md={12} lg={15} xl={12}>
+      <ButtonPublication></ButtonPublication>
       <ProfilePublication
         userPost={"Jean pierre Reyes"}
         urlPhoto={

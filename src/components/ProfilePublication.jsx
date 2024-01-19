@@ -33,7 +33,7 @@ console.log(comentario)
 
   return (
     <div
-      style={{ padding: "15px 0 15px 0", borderBottom: "1px #d7d7d7 solid" }}
+      style={{background:"white", borderRadius:"6px",padding: "15px", marginBottom:"15px" }}
     >
       <List.Item
         key="post"
