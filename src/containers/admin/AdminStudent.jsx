@@ -1,12 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import ModalAddTeacher from "../../components/ModalAddTeacher";
-import TableTeacher from "../../components/TableTeacher";
+import TableStudent from "../../components/TableStudent";
 
-const AdminTeacher = () => {
+const AdminStudent = () => {
   return (
     <div style={{ padding: "20px" }}>
-      <TableTeacher></TableTeacher>
+      <TableStudent></TableStudent>
     </div>
   );
 };
-export default AdminTeacher;
+export default AdminStudent;

@@ -23,12 +23,20 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/coar-logo.png";
 import AdminHome from "../../containers/admin/AdminHome";
 import AdminTeacher from "../../containers/admin/AdminTeacher";
-import AdminGalery from "../../containers/admin/AdminGalery";
+import AdminStudent from "../../containers/admin/AdminStudent";
 import AdminPublications from "../../containers/admin/AdminPublications";
 import AdminCategory from "../../containers/admin/AdminCategory";
-import { useLogin, useRole } from "../context/Context.provider";
+import {
+  useLogin,
+  useRole,
+  useCollectionPost,
+  useCollectionStudent,
+  useCollectionTeacher,
+  useUser,
+} from "../context/Context.provider";
 import RouteDefault from "./RouteDefault";
 import AdminProfile from "../../containers/admin/AdminProfile";
+import { getCollectionPost, getCollectionUser } from "../firebase/Functions";
 const { Header, Sider, Content } = Layout;
 
 function RouteAdmin() {
@@ -36,7 +44,10 @@ function RouteAdmin() {
   const [collapsed, setCollapsed] = useState(false);
   const { setIsLogin } = useLogin();
   const { setIsAdmin } = useRole();
-  const [user, setUser] = useState({})
+  const { setCollectionPost } = useCollectionPost();
+  const { setCollectionStudent } = useCollectionStudent();
+  const { setCollectionTeacher } = useCollectionTeacher();
+  const { userLog, setUserLog } = useUser();
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -45,20 +56,28 @@ function RouteAdmin() {
   const closeSession = () => {
     setIsLogin(false);
     setIsAdmin(false);
+    setCollectionPost([]);
+    setCollectionStudent([]);
+    setCollectionTeacher([]);
+    setUserLog("")
     localStorage.clear();
     navigate("/");
   };
 
-  const getStorage = () => {
-    const objStorage = localStorage.getItem("user");
-    if (objStorage) {
-      const objParse = JSON.parse(objStorage);
-      console.log(objParse)
-      setUser(objParse)
-    }
+  // const getPost = async () => {
+  //   await getCollectionPost(setCollectionPost, userLog);
+  // };
+  const getStudent = async () => {
+    await getCollectionUser("student", setCollectionStudent);
   };
+  const getTeacher = async () => {
+    await getCollectionUser("teacher", setCollectionTeacher);
+  };
+
   useEffect(() => {
-    getStorage();
+    // getPost();
+    getStudent();
+    getTeacher();
   }, []);
 
   return (
@@ -74,8 +93,8 @@ function RouteAdmin() {
           style={{ display: collapsed ? "none" : "" }}
         >
           <img src={logo} alt="logo" className="image-logo" />
-          <span className="name-user">{user.user}</span>
-          <span className="name-role">{user.role}</span>
+          <span className="name-user">{userLog.user}</span>
+          <span className="name-role">{userLog.role}</span>
         </div>
         <Menu
           mode="inline"
@@ -104,15 +123,7 @@ function RouteAdmin() {
               icon: <FileImageOutlined />,
               label: "Estudiantes",
               onClick: () => {
-                navigate("/admin/galery");
-              },
-            },
-            {
-              key: "5",
-              icon: <FileMarkdownTwoTone />,
-              label: "Publicaciones",
-              onClick: () => {
-                navigate("/admin/publications");
+                navigate("/admin/student");
               },
             },
             {
@@ -124,19 +135,11 @@ function RouteAdmin() {
               },
             },
             {
-              key: "7",
-              icon: <CustomerServiceTwoTone />,
-              label: "Cursos",
-              onClick: () => {
-                navigate("/admin/category");
-              },
-            },
-            {
               key: "8",
               icon: <CustomerServiceTwoTone />,
               label: "Perfil",
               onClick: () => {
-                navigate("/admin/profile");
+                navigate("/admin/profile?id="+userLog.id);
               },
             },
             {
@@ -180,7 +183,7 @@ function RouteAdmin() {
           <Routes>
             <Route path="/admin" element={<AdminHome />} />
             <Route path="/admin/teacher" element={<AdminTeacher />} />
-            <Route path="/admin/galery" element={<AdminGalery />} />
+            <Route path="/admin/student" element={<AdminStudent />} />
             <Route path="/admin/publications" element={<AdminPublications />} />
             <Route path="/admin/category" element={<AdminCategory />} />
             <Route path="/admin/profile" element={<AdminProfile />} />

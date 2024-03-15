@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import logo from "../../assets/images/coar-logo.png";
 import StudentHome from "../../containers/StudentHome";
 import StudentNotice from "../../containers/StudentNotice";
-import { useLogin, useRole } from "../context/Context.provider";
+import { useCollectionPostLimit, useLogin, useRole } from "../context/Context.provider";
 import RouteDefault from "./RouteDefault";
+import AdminProfile from "../../containers/admin/AdminProfile";
+import { getCollectionPostLimit } from "../firebase/Functions";
 
 
 const { Header, Content, Footer } = Layout;
 const RouteStudent = () => {
   const { setIsLogin } = useLogin();
   const { setIsAdmin } = useRole();
+  const {setCollectionPostLimit} = useCollectionPostLimit();
   const navigate = useNavigate();
 
   const closeSession = () => {
@@ -42,13 +45,22 @@ const RouteStudent = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  const getPostLimit = async () => {
+    await getCollectionPostLimit(setCollectionPostLimit, 3);
+  };
+
+  useEffect(() => {
+    getPostLimit();
+  }, []);
+
   return (
     <Layout>
       <Header
         style={{
           position: "sticky",
           top: 0,
-          zIndex: 1,
+          zIndex: 1000,
           width: "100%",
           display: "flex",
           alignItems: "center",
@@ -63,22 +75,22 @@ const RouteStudent = () => {
           style={{
             flex: 1,
             minWidth: 0,
+            justifyContent:"flex-end"
           }}
         />
       </Header>
       <Content
         style={{
-          padding: "0 48px",
+          padding: "0 28px",
         }}
       >
         <Breadcrumb
           style={{
-            margin: "16px 0",
+            margin: "18px 0",
           }}
         ></Breadcrumb>
         <div
           style={{
-            padding: 24,
             minHeight: 380,
             background: colorBgContainer,
             borderRadius: borderRadiusLG,
@@ -87,6 +99,7 @@ const RouteStudent = () => {
           <Routes>
             <Route path="/student" element={<StudentHome />} />
             <Route path="/student/notice" element={<StudentNotice />} />
+            <Route path="/student/profile" element={<AdminProfile />} />
             <Route path="*" element={<RouteDefault />}></Route>
           </Routes>
         </div>

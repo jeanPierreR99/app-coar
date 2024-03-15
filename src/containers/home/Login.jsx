@@ -1,29 +1,47 @@
 import React, { useState } from "react";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import logo_coar from "../../assets/images/coar-logo.png";
-import { useLogin, useRole } from "../../services/context/Context.provider";
+import {
+  useLogin,
+  useRole,
+  useUser,
+} from "../../services/context/Context.provider";
 import app from "../../services/firebase/ConectionFirebase";
 
-import { collection, query, where, getDocs, getFirestore } from "firebase/firestore";
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  getFirestore,
+  addDoc,
+  updateDoc,
+  doc,
+} from "firebase/firestore";
 
 const firestore = getFirestore(app);
 
 // const createCollection = async () => {
 //   try {
-//     const collectionRef = collection(firestore, "users");
-
-//     await addDoc(collectionRef, {
-//       user_name: "admin",
-//       user_user: "Mario Jesus Ormachea Mejia",
+//     const userCollection = collection(firestore, "users");
+//     const user = {
+//       user_dni: "admin",
+//       user_name: "Mario Jesus Ormachea Mejia",
 //       user_password: "1234",
-//       user_rol: "admin",
-//     });
+//       user_role: "admin",
+//     };
 
-//     console.log("Colección creada exitosamente");
-//   } catch (error) {
-//     console.error("Error al crear la colección: ", error);
+//     const docRef = await addDoc(userCollection, user);
+
+//     await updateDoc(doc(userCollection, docRef.id), {
+//       user_id: docRef.id,
+//     });
+//     return true;
+//   } catch (e) {
+//     console.log(e);
+//     return false;
 //   }
 // };
 
@@ -32,8 +50,8 @@ const Login = () => {
   const [error, setError] = useState(false);
   const { setIsLogin } = useLogin();
   const { setIsAdmin } = useRole();
+  const { setUserLog } = useUser();
   const onFinish = (values) => {
-    console.log(values);
     handleLogin(values.username, values.password);
     // createCollection()
   };
@@ -41,45 +59,44 @@ const Login = () => {
     console.log("Failed:", errorInfo);
   };
 
-  const handleStorage = (user, role) => {
+  const handleStorage = (id, user, role, avatar) => {
     const userStorage = {
+      id: id,
       user: user,
       role: role,
+      url_avatar: avatar
     };
     localStorage.setItem("user", JSON.stringify(userStorage));
+    setUserLog(userStorage);
   };
 
   const handleLogin = async (user_name, password) => {
-    console.log(user_name, password);
+    // console.log(user_name, password);
 
     const citiesRef = collection(firestore, "users");
     const q = query(
       citiesRef,
-      where("user_name", "==", user_name),
+      where("user_dni", "==", user_name),
       where("user_password", "==", password)
     );
 
     const querySnapshot = await getDocs(q);
-    console.log(querySnapshot)
-    if(!querySnapshot.empty){
+    if (!querySnapshot.empty) {
       querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
         const val = doc.data();
-        if(val.user_rol == "admin"){
+        if (val.user_role == "admin" || val.user_role == "teacher") {
           setIsLogin(true);
-            setIsAdmin(true)
-            navigate("/admin");
-            handleStorage(val.user_user, val.user_rol)
-        }
-        else{
+          setIsAdmin(true);
+          navigate("/admin");
+          handleStorage(val.user_id, val.user_name, val.user_role, val.user_url_avatar);
+        } else {
           setIsLogin(true);
-            navigate("/student");
-            handleStorage(val.user_user, val.user_rol)
+          navigate("/student");
+          handleStorage(val.user_id, val.user_name, val.user_role, val.user_url_avatar);
         }
       });
-    }
-    else{
-      alert("credenciales incorrectas")
+    } else {
+      message.error("credenciales incorrectas");
     }
   };
 

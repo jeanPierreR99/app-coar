@@ -15,21 +15,21 @@ import {
   Image,
   Tag,
 } from "antd";
-import { useCollectionTeacher } from "../services/context/Context.provider";
+import ModalAddStudent from "./ModalAddStudent";
+import { useCollectionStudent } from "../services/context/Context.provider";
 import { deleteCollection } from "../services/firebase/Functions";
-import ModalAddTeacher from "./ModalAddTeacher";
 
-const TableTeacher = () => {
+const TableStudent = () => {
   const [searchText, setSearchText] = useState("");
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false); // Estado para controlar la apertura y cierre del modal
   const [selectedRowData, setSelectedRowData] = useState({});
-  const { collectionTeacher } = useCollectionTeacher();
+  const { collectionStudent } = useCollectionStudent();
 
   const [filteredData, setFilteredData] = useState([]);
 
   const handleSearch = (value) => {
-    const filtered = collectionTeacher.filter((item) =>
+    const filtered = collectionStudent.filter((item) =>
       item.user_name.toLowerCase().includes(value.toLowerCase())
     );
     setFilteredData(filtered);
@@ -146,10 +146,10 @@ const TableTeacher = () => {
 
   return (
     <div>
-      <ModalAddTeacher onSearch={handleSearch}></ModalAddTeacher>
+      <ModalAddStudent onSearch={handleSearch}></ModalAddStudent>
       <Table
         columns={columns}
-        dataSource={filteredData.length > 0 ? filteredData : collectionTeacher}
+        dataSource={filteredData.length > 0 ? filteredData : collectionStudent}
         rowKey={(record) => record.user_id}
         scroll={{
           x: "auto",
@@ -194,4 +194,4 @@ const TableTeacher = () => {
     </div>
   );
 };
-export default TableTeacher;
+export default TableStudent;

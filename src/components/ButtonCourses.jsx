@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormOutlined, ProfileOutlined } from "@ant-design/icons";
+import { FormOutlined, FileOutlined } from "@ant-design/icons";
 import {
   Button,
   Input,
@@ -14,6 +14,7 @@ import {
 import { InboxOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
 import {
+    createCollectionFile,
   createCollectionPost,
   createFileStorage,
 } from "../services/firebase/Functions";
@@ -22,7 +23,7 @@ import { useUser } from "../services/context/Context.provider";
 
 const { Dragger } = Upload;
 
-const ButtonPublication = () => {
+const Courses = () => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const [description, setDescription] = useState("");
@@ -35,7 +36,7 @@ const ButtonPublication = () => {
   const success = () => {
     messageApi.open({
       type: "success",
-      content: "Publicación agregada",
+      content: "Archivo agregado",
     });
   };
 
@@ -54,7 +55,7 @@ const ButtonPublication = () => {
 
       if (imageUrl) {
         console.log("Imagen cargada con éxito: " + imageUrl);
-        if (createCollectionPost(description, imageUrl, userLog)) {
+        if (createCollectionFile(description, imageUrl, userLog)) {
           setOpen(false);
           setConfirmLoading(false);
           success();
@@ -104,7 +105,7 @@ const ButtonPublication = () => {
       {contextHolder}
       <Row gutter={15}>
         <Col>
-          <Tooltip placement="top" color="blue" title={"Nueva publicación"}>
+          <Tooltip placement="top" color="green" title={"Nuevo archivo"}>
             <button
               style={{
                 padding: "10px 15px 10px 15px",
@@ -112,45 +113,27 @@ const ButtonPublication = () => {
                 border: "none",
                 marginBottom: "15px",
                 borderRadius: "6px",
-                color: "blue",
+                color: "green",
                 cursor: "pointer",
                 opacity: ".8",
               }}
               onClick={showModal}
             >
-              <FormOutlined style={{ fontSize: "20px" }}></FormOutlined>
-            </button>
-          </Tooltip>
-        </Col>
-        <Col>
-          <Tooltip placement="top" color="purple" title={"Editar perfil"}>
-            <button
-              style={{
-                padding: "10px 15px 10px 15px",
-                background: "white",
-                border: "none",
-                marginBottom: "15px",
-                borderRadius: "6px",
-                color: "purple",
-                cursor: "pointer",
-                opacity: ".8",
-              }}
-            >
-              <ProfileOutlined style={{ fontSize: "20px" }}></ProfileOutlined>
+              <FileOutlined style={{ fontSize: "20px" }}></FileOutlined>
             </button>
           </Tooltip>
         </Col>
       </Row>
       <Modal
-        title="Nueva Publicación"
+        title="Nuevo archivo"
         visible={open}
         onOk={handleOk}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
         okButtonProps={{ disabled: isOkButtonDisabled }}
       >
-        <TextArea
-          placeholder="Contenido"
+        <Input
+          placeholder="Descripción"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -175,7 +158,7 @@ const ButtonPublication = () => {
                 <InboxOutlined />
               </p>
               <p className="ant-upload-text">
-                Haz clic o arrastra la imagen aquí
+                Haz clic o arrastra el archivo aquí
               </p>
             </>
           )}
@@ -185,4 +168,4 @@ const ButtonPublication = () => {
   );
 };
 
-export default ButtonPublication;
+export default Courses;

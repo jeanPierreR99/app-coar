@@ -1,1 +1,1 @@
-export const ROLE = ["admin","student"]
+export const ROLE = ["admin","teacher","student"]

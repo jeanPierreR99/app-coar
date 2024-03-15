@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
 import FormAddStudent from './FormAddStudent';
 import InputSearch from './InputSearch';
-const ModalAddTeacher = ({onSearch}) => {
+const ModalAddStudent = ({onSearch}) => {
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const showModal = () => {
@@ -31,9 +31,9 @@ const ModalAddTeacher = ({onSearch}) => {
         onCancel={handleCancel}
         footer=""
       >
-        <FormAddStudent setOpen={setOpen} type="teacher"></FormAddStudent>
+        <FormAddStudent setOpen={setOpen} type="student"></FormAddStudent>
       </Modal>
     </>
   );
 };
-export default ModalAddTeacher;
+export default ModalAddStudent;
